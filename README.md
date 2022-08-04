@@ -1,10 +1,10 @@
 # conv
-Simple, easy-to-use type convertion library for Go 1.8+. Replacement of the existing [convert repository](https://github.com/vence722/convert).
+Simple, easy-to-use type convertion library for Go 1.18+. Replacement of the existing [convert repository](https://github.com/vence722/convert).
 
 Requirements
 -----
 ```
-Go 1.8+
+Go 1.18+
 ```
 
 Installation
