@@ -1,7 +1,9 @@
 package conv
 
 import (
+	"errors"
 	"strconv"
+	"strings"
 )
 
 func Int2Str[T SignedInterger](input T) string {
@@ -61,6 +63,32 @@ func Str2Float[T Float](input string) (T, error) {
 
 func Str2FloatOrElse[T Float](input string, defaultValue T) T {
 	if res, err := Str2Float[T](input); err != nil {
+		return defaultValue
+	} else {
+		return res
+	}
+}
+
+func Bool2Str(input bool) string {
+	if input {
+		return "true"
+	}
+	return "false"
+}
+
+func Str2Bool(input string) (bool, error) {
+	switch strings.ToLower(input) {
+	case "true":
+		return true, nil
+	case "false":
+		return false, nil
+	default:
+		return false, errors.New("invalid boolean value")
+	}
+}
+
+func Str2BoolOrElse(input string, defaultValue bool) bool {
+	if res, err := Str2Bool(input); err != nil {
 		return defaultValue
 	} else {
 		return res

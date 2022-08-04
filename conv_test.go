@@ -169,3 +169,39 @@ func TestStr2FloatOrElse(t *testing.T) {
 		t.Errorf("expect a2 is converted into 3.0 when conversion failed")
 	}
 }
+
+func TestBool2Str(t *testing.T) {
+	var a1 bool = true
+	if res := Bool2Str(a1); res != "true" {
+		t.Errorf("expect a1 is converted into \"true\"")
+	}
+
+	var a2 bool = false
+	if res := Bool2Str(a2); res != "false" {
+		t.Errorf("expect a2 is converted into \"false\"")
+	}
+}
+
+func TestStr2Bool(t *testing.T) {
+	var a1 string = "true"
+	if res, err := Str2Bool(a1); err != nil || res != true {
+		t.Errorf("expect a1 is converted into true")
+	}
+
+	var a2 string = "flase"
+	if _, err := Str2Bool(a2); err == nil {
+		t.Errorf("expect a2 conversion failed")
+	}
+}
+
+func TestStr2BoolOrElse(t *testing.T) {
+	var a1 string = "true"
+	if res := Str2BoolOrElse(a1, false); res != true {
+		t.Errorf("expect a1 is converted into true")
+	}
+
+	var a2 string = "flase"
+	if res := Str2BoolOrElse(a2, true); res != true {
+		t.Errorf("expect a2 is converted into true when conversion failed")
+	}
+}
